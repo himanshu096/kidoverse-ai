@@ -1,0 +1,14 @@
+/* NEW/UPDATED: Styles for .lesson-content-display */
+.lesson-content-display {
+  width: 100%; /* Makes it span the full width of .main-app-area */
+  max-height: 100%;
+  color: white;
+  
+  /* Reset previous large percentage margins, as main-app-area now handles outer spacing */
+  margin: 0; 
+  padding: 20px; /* Add some internal padding for content readability */
+  
+  border-radius: 32px;
+  box-sizing: border-box; /* Crucial for padding */
+  overflow-y: auto; /* Enable vertical scrolling if markdown content is longer than the display area */
+}

@@ -1,0 +1,25 @@
+
+.tool-image-container {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column; // Keep column to help center the single image child
+  justify-content: center; // Center image vertically
+  align-items: center;     // Center image horizontally
+  
+  background: var(--Neutral-700); // Using a variable from your :root
+  border-radius: 32px;
+  overflow: hidden;
+  /* Removed position: relative; as it's no longer needed without absolutely positioned children */
+}
+
+.tool-image-placeholder{
+  width: 100%;
+  height: 100%;
+  object-fit: contain; // "Full fit mode": Scales the image to fit entirely within the element, preserving its aspect ratio. May result in empty space (letterboxing).
+                        // Use 'cover' if you want it to fill the entire space, potentially cropping the image.
+  border-radius: 4px; // Small border-radius for the image itself
+}
+
+/* Removed styles for .tool-image-overlay-close-button-wrapper */
+/* Removed styles for .tool-image-overlay-close-button */

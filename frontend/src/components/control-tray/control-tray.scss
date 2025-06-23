@@ -1,0 +1,204 @@
+/**
+ * Copyright 2025 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* stylelint-disable */
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: white;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  text-transform: lowercase;
+  cursor: pointer;
+  animation: opacity-pulse 3s ease-in infinite;
+  transition: all 0.2s ease-in-out;
+  width: 48px;
+  height: 48px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  user-select: none;
+  cursor: pointer;
+
+  &:focus {
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+  }
+
+  &.outlined {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+
+  .no-action {
+    pointer-events: none;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0);
+  }
+
+  &.connected {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+
+    &:hover {
+      border: 1px solid white;
+    }
+  }
+}
+
+@property --volume {
+  syntax: "length";
+  inherit: false;
+  initial-value: 0px;
+}
+
+.disabled .mic-button,
+.mic-button.disabled {
+  &:before {
+    background: rgba(0, 0, 0, 0);
+  }
+}
+
+.mic-button {
+  position: relative;
+  background-color: white;
+  z-index: 1;
+  color: #ff6b6b;
+  transition: all 0.2s ease-in;
+
+  &:focus {
+    border: 2px solid var(--Neutral-20);
+    outline: 2px solid white;
+  }
+
+  &:hover {
+    background-color: #eee;
+  }
+
+  &:before {
+    position: absolute;
+    z-index: -1;
+    top: calc(var(--volume) * -1);
+    left: calc(var(--volume) * -1);
+    display: block;
+    content: "";
+    opacity: 0.35;
+    background-color: white;
+    width: calc(100% + var(--volume) * 2);
+    height: calc(100% + var(--volume) * 2);
+    border-radius: 24px;
+    transition: all 0.02s ease-in-out;
+  }
+}
+
+.connect-toggle {
+  &:focus {
+    border: 2px solid var(--Neutral-20);
+    outline: 2px solid var(--Neutral-80);
+  }
+
+  &:not(.connected) {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+  }
+}
+
+.control-tray {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  padding-bottom: 24px;
+
+  .disabled .action-button,
+  .action-button.disabled {
+    background: rgba(0, 0, 0, 0);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .connection-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    .connection-button-container {
+      border-radius: 27px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: linear-gradient(135deg, rgba(255, 107, 107, 0.8) 0%, rgba(255, 167, 38, 0.8) 100%);
+      backdrop-filter: blur(10px);
+      padding: 10px;
+    }
+
+    .text-indicator {
+      font-size: 11px;
+      color: white;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      user-select: none;
+    }
+
+    &:not(.connected) {
+      .text-indicator {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+.actions-nav {
+  background: linear-gradient(135deg, rgba(255, 107, 107, 0.8) 0%, rgba(255, 167, 38, 0.8) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 27px;
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  overflow: clip;
+  padding: 10px;
+
+  transition: all 0.6s ease-in;
+
+  & > * {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+@keyframes opacity-pulse {
+  0% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.9;
+  }
+}
