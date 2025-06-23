@@ -25,6 +25,7 @@ kidoverse-ai/
 │   │   └── utils/       # Frontend utilities and API clients
 │   ├── public/          # Static assets and animations
 │   ├── package.json     # Frontend dependencies
+│   └── .env.example     # Frontend environment to be copied to .env
 │   └── README.md        # Frontend deployment guide
 ├── deployment/          # Infrastructure and deployment configuration
 │   ├── terraform/       # Terraform infrastructure as code
@@ -35,7 +36,7 @@ kidoverse-ai/
 │   ├── integration/     # Integration tests
 │   └── load_test/       # Load testing scripts
 ├── Dockerfile           # Container configuration
-├── firebase.json        # Firebase hosting configuration
+├── .env.example         # environment vars to be copied to .env
 ├── Makefile             # Development and deployment commands
 └── pyproject.toml       # Python project dependencies and configuration
 ```
@@ -98,12 +99,9 @@ For the frontend authentication system, you'll need to set up Google OAuth:
    VERTEXAI=true
    VERTEXAI_LOCATION=us-central1
    
-   # OAuth Configuration (for frontend)
+   # OAuth Configuration (for frontend) (follow .env.example)
    REACT_APP_GOOGLE_CLIENT_ID=your-oauth-client-id.apps.googleusercontent.com
    
-   # Optional: Use AI Studio instead of Vertex AI
-   # VERTEXAI=false
-   # GOOGLE_API_KEY=your-google-ai-studio-api-key
    ```
 
    **Frontend Environment Setup:**
